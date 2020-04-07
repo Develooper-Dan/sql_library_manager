@@ -1,6 +1,7 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  h1 #{err.status} - #{err.message}
+  p Click the button below to get back to the main page
+  p
+    a(class="button" href="/") Home
