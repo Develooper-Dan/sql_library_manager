@@ -1,5 +1,48 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h2 Books
+  div(id="container")
+    div(id="head")
+      form(method="get" action= "/books" id="search")
+        input(type="search" placeholder= "Enter a search term..." name="searchTerm" value= query)
+        button(type="submit" class="search") &#128269;
+      p
+        a.button(href='/books/new') Create New Book 
+      // Makes a new db request everytime the value changes  
+      label(class="shownResults") Items per page:
+      select(name="itemsPerPage" class="shownResults" form="search" onchange="form.submit()")
+        each opt in [5, 10, 15]
+          if (opt===itemsPerPage)
+            option(selected)= opt
+          else  
+            option= opt
+    div(id="table")
+        if (bookList.length > 0)
+          table
+            thead
+              tr
+                th Title
+                th Author
+                th Genre
+                th Year
+            tbody
+              each book in bookList
+                tr
+                  td 
+                    a(href=`/books/${book.id}`) #{book.title}
+                  td= book.author
+                  td= book.genre
+                  td= book.year
+        else
+          h3 No matching books found.
+    div(id="pagination")    
+      if (noOfPages > 1)
+        - let page = 1 
+        ul
+          while page <= noOfPages
+            li(class="pagination")
+              if (page === currentPage)
+                button(type="submit" form="search" name="currentPage" value=page class="active")= page++   
+              else  
+                button(type="submit" form="search" name="currentPage" value=page)= page++ 
