@@ -36,6 +36,7 @@ a.button, input[type=submit] {
   background: #019875;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
+
   font-size: 16px;
   border-radius: 2px;
   cursor: pointer;
@@ -45,6 +46,7 @@ form a.button, input[type=submit] {
   margin-left: 140px;
   transition: 0.4s;
 }
+
 
 input[type=submit] {
   border: 0;
@@ -57,6 +59,8 @@ input[type=submit] {
 
 input[type=search] {
   min-width: 250px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
   a.button:hover, input[type=submit]:hover {
     background-color: #01b189;
@@ -81,14 +85,14 @@ input[type=search] {
     border: 2px groove #e7e7e7;
   }
 
-.shownResults {
+#shownResults {
 display: inline-block;
 min-width: 0;
 font-size: 16px;
 padding: 4px;
 }
 
-label.shownResults {
+label#shownResults {
 margin-right: 4px;
 }
 
@@ -138,9 +142,7 @@ td {
 
 label {
   font-weight: bold;
-  min-width: 130px;
   display: inline-block;
-  transition: 0.4s;
 }
 
 input {

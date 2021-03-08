@@ -25,11 +25,7 @@ app.use(function (req, res, next) {
 
 app.use(function (err, req, res, next) {
   console.error(`${err.status}: ${err.stack}`);
-  if(err.status ===404){
-    res.render("page-not-found", {err});
-  } else {
   res.render("error", {err});
-  }
 })
 
 module.exports = app;

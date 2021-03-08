@@ -5,13 +5,19 @@ block content
   div(id="container")
     div(id="head")
       form(method="get" action= "/books" id="search")
+        label(for="searchCategories")
+        select(name="searchCategory" id="searchCategories" form="search")
+          option(value="author" selected= "author" === selectedCategory) Search by author
+          option(value="title" selected= "title" === selectedCategory) Search by title
+          option(value="genre" selected= "genre"=== selectedCategory) Search by genre
+          option(value="year" selected= "year"=== selectedCategory) Search by year
         input(type="search" placeholder= "Enter a search term..." name="searchTerm" value= query)
         button(type="submit" class="search") &#128269;
       p
         a.button(href='/books/new') Create New Book 
-      // Makes a new db request everytime the value changes  
-      label(class="shownResults") Items per page:
-      select(name="itemsPerPage" class="shownResults" form="search" onchange="form.submit()")
+      // Makes a new db request everytime the value changes
+      label(for="shownResults") Items per page:
+      select(name="itemsPerPage" id="shownResults" form="search" onchange="form.submit()")
         each opt in [5, 10, 15]
           if (opt===itemsPerPage)
             option(selected)= opt
